@@ -1,0 +1,15 @@
+{
+  "name": "340final",
+  "version": "1.0.0",
+  "description": "Final Project for CS340, Databases. Spring term 2020.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Preston Pickering, Trinity Polk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  }
+}
