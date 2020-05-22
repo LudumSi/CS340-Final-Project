@@ -1,1 +1,6 @@
-This is our README
+
+Group 4:
+Preston Pickering, Trinity Polk
+
+Overview:
+Have you, a trader in exotic weaponry, ever felt like your inventory was getting out of control? Then you’re in luck!! The KickAxe Inventory System is here to help! This application is for the weary blacksmith tired of constantly dealing with the chaos of business! Registering a crafted weapon in this database allows for the storage of information such as their name (so you never confuse Stormbringer, Axe of Destiny for Strombrink, and Axe of Density ever again), type, materials they’re made out of, and magical properties (if they have them). The KickAxe Inventory System also records which blacksmith created the weapon. Each registered blacksmith has a unique account (through a username, password pair), and can store information about themselves like their name, ID, age, level of experience, past mentors, location, and area of expertise. The database will also store the amount of materials each blacksmith has (as well as the properties of each material such as color, hardness, weight, and cost) and magical enhancements (including the materials needed to make them, their common name, and their effects).
