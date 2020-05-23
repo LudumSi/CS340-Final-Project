@@ -8,21 +8,25 @@
   </head>
 
   <body>
-    <p>Username:<input id="username"></input></p>
-    <p>Password:<input id="password"></input></p>
-    <p>First Name:<input id="fname"></input></p>
-    <p>Last Name:<input id="lname"></input></p>
-    <p>Birthdate:<input type="date" id="dob"></input></p>
-    <p>Experience:<select id="experience">
-     <option value="1">Apprentice</option>
-     <option value="2">Journeyman</option>
-     <option value="3">Master</option>
-    </select></p>
-    <p>Village:<input id="village"></input></p>
-    <p>Kingdom:<input id="kingdom"></input></p>
-    <p>Specialty:<input id="special"></input></p>
+    <fieldset>
+      <label>Username:    </label><input id="username"></input><br><br>
+      <label>Password:    </label><input id="password"></input><br><br>
+      <label>First Name:  </label><input id="fname"></input><br><br>
+      <label>Last Name:   </label><input id="lname"></input><br><br>
+      <label>Birthdate:   </label><input type="date" id="dob"></input><br><br>
+      <label>Experience:  </label><select id="experience">
+       <option value="1">Apprentice</option>
+       <option value="2">Journeyman</option>
+       <option value="3">Master</option>
+      </select><br><br>
+      <label>Village:     </label><input id="village"></input><br><br>
+      <label>Kingdom:     </label><input id="kingdom"></input><br><br>
+      <label>Specialty:   </label><input id="special"></input>
+    </fieldset>
 
-    <button type="button">Submit</button>
-    <a href="home.html"><button type="button">Back</button></a>
+    <div class='newuser_buttons'>
+      <button type="button">Submit</button>
+      <a href="home.html"><button type="button">Back</button></a>
+    </div>
   </body>
 </html>

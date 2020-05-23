@@ -68,9 +68,15 @@ input{
   margin: 5px;
 }
 
-.login_input, .login_buttons1, .login_buttons2, .home_buttons{
+.login_input, .login_buttons1, .login_buttons2, .home_buttons, .newuser_buttons{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: space-between;
+}
+
+fieldset{
+  border:none;
+  width:400px;
+  margin: auto;
 }
