@@ -68,7 +68,7 @@ input{
   margin: 5px;
 }
 
-.login_input, .login_buttons1, .login_buttons2, .home_buttons, .newuser_buttons, .browse_buttons{
+.login_input, .login_buttons1, .login_buttons2, .home_buttons, .newuser_buttons, .browse_buttons, .editprofile_buttons{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -76,7 +76,6 @@ input{
 }
 
 fieldset{
-  border:none;
-  width:400px;
+  width:500px;
   margin: auto;
 }

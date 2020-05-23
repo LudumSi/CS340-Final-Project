@@ -8,47 +8,51 @@
   </head>
 
   <body>
-    <h2 id="smith_name">Blacksmith Name Here</h2>
+    <h2 id="smith_name">[Blacksmith Name Here]</h2>
 
-    <div id="training_div">
-    <h3>Add Training</h3>
-    <p>Mentor:<input id="mentor"></input></p>
-    <p>Mentee:<input id="mentee"></input></p>
-    <p>Start Date:<input type="date" id="training_start"></input></p>
-    <p>End Date:<input type="date" id="training_end"></input></p>
-    <p>Training Continues to Present <input type="date" id="training_present"></input></p>
+    <fieldset>
+      <legend>Add Training</legend>
+      <label>Mentor:</label><input id="mentor"></input><br><br>
+      <label>Mentee:</label><input id="mentee"></input><br><br>
+      <label>Start Date of Past Training:</label><input type="date" id="training_start"></input><br><br>
+      <label>End Date of Past Training:</label><input type="date" id="training_end"></input><br><br>
+      <label>start Date of Current Training:</label><input type="date" id="training_present"></input><br><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Add Weapon</legend>
+      <label>Name:</label><input id="weapon_name"></input><br><br>
+      <label>Type:</label><input id="weapon_type"></input><br><br>
+      <label>Cost:</label><input id="weapon_cost"></input><br><br>
+      <label>Materials:</label><input id="weapon_mats"></input><br><br>
+      <label>Enchantments:</label><input id="weapon_magic"></input><br><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Add Materials</legend>
+      <label>Material Name:</label><input id="mat_name_a"></input><br><br>
+      <label>Amount to Add:</label><input id="mat_amnt_a"></input><br><br>
+    </fieldset>
+    <fieldset>
+      <legend>Remove Materials</legend>
+      <label>Material Name:</label><input id="mat_name_r"></input><br><br>
+      <label>Amount to Remove:</label><input id="mat_amnt_r"></input><br><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Edit Info</legend>
+      <label>Specialty:</label><input id="specialty"></input><br><br>
+      <label>Location:</label><input id="location"></input><br><br>
+      <label>Experience:</label><select id="experience">
+       <option value="1">Apprentice</option>
+       <option value="2">Journeyman</option>
+       <option value="3">Master</option>
+      </select><br><br>
+    </fieldset>
+
+    <div class='editprofile_buttons'>
+      <button type="button">Submit</button>
+      <a href="home.html"><button type="button">Back</button></a>
     </div>
-
-    <div id="weapon_div">
-    <h3>Add Weapon</h3>
-    <p>Name:<input id="weapon_name"></input></p>
-    <p>Type:<input id="weapon_type"></input></p>
-    <p>Cost:<input id="weapon_cost"></input></p>
-    <p>Materials:<input id="weapon_mats"></input></p>
-    <p>Enchantments:<input id="weapon_magic"></input></p>
-    </div>
-
-    <div id="materials_div">
-    <h3>Add Materials</h3>
-    <p>Material Name:<input id="mat_name_a"></input></p>
-    <p>Amount to Add:<input id="mat_amnt_a"></input></p>
-    <h3>Remove Materials</h3>
-    <p>Material Name:<input id="mat_name_r"></input></p>
-    <p>Amount to Remove:<input id="mat_amnt_r"></input></p>
-    </div>
-
-    <div id="bio_div">
-    <h3>Edit Info</h3>
-    <p>Specialty:<input id="specialty"></input></p>
-    <p>Location:<input id="location"></input></p>
-    <p>Experience:<select id="experience">
-     <option value="1">Apprentice</option>
-     <option value="2">Journeyman</option>
-     <option value="3">Master</option>
-    </select></p>
-    </div>
-
-    <button type="button">Submit</button>
-    <a href="home.html"><button type="button">Back</button></a>
   </body>
 </html>
