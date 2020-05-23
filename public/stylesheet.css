@@ -43,13 +43,6 @@ button{
   margin: 5px;
 }
 
-.home_buttons{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-between;
-}
-
 button:hover{
   background-color: #916aff;
   color: white;
@@ -59,4 +52,25 @@ button:hover{
 .home_message{
   font-size: 20px;
   text-align: center;
+}
+
+input{
+  background-color: #a0d6f0;
+  border: 2px solid #288aba;
+
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  margin: 5px;
+}
+
+.login_input, .login_buttons1, .login_buttons2, .home_buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
 }
