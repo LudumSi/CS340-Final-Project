@@ -12,37 +12,33 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine','handlebars');
 app.set('port', process.argv[2]);
 
-app.get('/',function(req,res,next){
+// app.get('/',function(req,res,next){
+//
+//   // res.status(200).render('test-page')
+//
+//   //Can use handlebars to rend stuff from the database, eventually
+//
+//   //res.status(200).render('landing-page',{
+//   //
+//   //      Database bullshit
+//   //
+//   //});
+//
+//   //Example:
+//   //   var context = {};
+//   //
+//   //   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
+//   // //	context.results = JSON.stringify(rows);
+//   // 	res.render('displayTable',{data: rows});
+//   // 	});
+//
+// });
 
-  res.status(200).render('test-page')
+app.use(express.static('public'));
 
-  //Can use handlebars to rend stuff from the database, eventually
-
-  //res.status(200).render('landing-page',{
-  //
-  //      Database bullshit
-  //
-  //});
-
-  //Example:
-  //   var context = {};
-  //
-  //   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
-  // //	context.results = JSON.stringify(rows);
-  // 	res.render('displayTable',{data: rows});
-  // 	});
-
-});
-
-app.use(function(req,res){
-  res.status(404);
-  res.render('404');
-});
-
-app.use(function(err, req, res, next){
-  console.error(err.stack);
-  res.status(500);
-  res.render('500');
+app.get('*', function (req, res, next)
+{
+	res.status(404).render('404');
 });
 
 app.listen(app.get('port'), function(){
