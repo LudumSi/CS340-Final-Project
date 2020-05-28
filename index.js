@@ -5,9 +5,6 @@ var mysq= require('./dbconfig.js')
 var app = express()
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
-
-
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine','handlebars');
 app.set('port', process.argv[2]);
@@ -23,15 +20,6 @@ app.set('port', process.argv[2]);
 //   //      Database bullshit
 //   //
 //   //});
-//
-//   //Example:
-//   //   var context = {};
-//   //
-//   //   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
-//   // //	context.results = JSON.stringify(rows);
-//   // 	res.render('displayTable',{data: rows});
-//   // 	});
-//
 // });
 
 app.use(express.static('public'));
