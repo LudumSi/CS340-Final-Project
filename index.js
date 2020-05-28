@@ -1,18 +1,18 @@
 
-//Note: Untested as of 5/21/2020, turns out all I needed to do was HTML :) Fuck my life
-
 var express = require('express');
-var exphbs = require('express-handlebars');
+var mysq= require('./dbconfig.js')
 
 var app = express()
-var port = process.env.PORT || 3000
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
-app.engine('handlebars',exphbs());
+
+
+
+app.engine('handlebars', handlebars.engine);
 app.set('view engine','handlebars');
+app.set('port', process.argv[2]);
 
-app.use(express.static('public'));
-
-app.get('/',function(req,res){
+app.get('/',function(req,res,next){
 
   res.status(200).render('test-page')
 
@@ -24,4 +24,27 @@ app.get('/',function(req,res){
   //
   //});
 
+  //Example:
+  //   var context = {};
+  //
+  //   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
+  // //	context.results = JSON.stringify(rows);
+  // 	res.render('displayTable',{data: rows});
+  // 	});
+
+});
+
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
+
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500);
+  res.render('500');
+});
+
+app.listen(app.get('port'), function(){
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
