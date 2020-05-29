@@ -8,6 +8,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
+//Basic Pages :) It is bad, I know, but eh it works and I don't wanna clean it lol
 app.use('/static', express.static('public'));
 app.use('/', express.static('public'));
 
@@ -33,6 +34,22 @@ app.get('/newuser',function(req,res,next){
 
 app.get('/browse',function(req,res,next){
 	res.render('browse');
+});
+
+app.get('/browseWeapons',function(req,res,next){
+	res.render('browseWeapons');
+});
+
+app.get('/browseEnchantments',function(req,res,next){
+	res.render('browseEnchantments');
+});
+
+app.get('/browseMaterials',function(req,res,next){
+	res.render('browseMaterials');
+});
+
+app.get('/browseBlacksmiths',function(req,res,next){
+	res.render('browseBlacksmiths');
 });
 
 app.get('/profile',function(req,res,next){
@@ -76,6 +93,7 @@ app.get('/material',function(req,res,next){
 });
 
 //Add specific ones here --> Maybe separate JS files????
+//Ex:
 // app.use('/classes', require('./classes.js'));
 //
 // app.use('/search', require('./search.js'));
