@@ -30,6 +30,10 @@ app.get('/browse', function(req,res,next){
 	res.render('browse');
 });
 
+app.get('/editprofile', function(req,res,next){
+	res.render('editprofile');
+});
+
 
 
 app.use(function(req,res){
