@@ -42,6 +42,10 @@ app.get('/login', function(req,res,next){
 	res.render('login');
 });
 
+app.get('/newuser', function(req,res,next){
+	res.render('newuser');
+});
+
 
 
 app.use(function(req,res){
