@@ -15,15 +15,59 @@ app.get('/',function(req,res,next){
 	res.render('index');
 });
 
+app.get('/index',function(req,res,next){
+	res.render('index');
+});
+
+app.get('/home',function(req,res,next){
+	res.render('home');
+});
+
+app.get('/login',function(req,res,next){
+	res.render('login');
+});
+
+app.get('/newuser',function(req,res,next){
+	res.render('newuser');
+});
+
+app.get('/browse',function(req,res,next){
+	res.render('browse');
+});
+
+app.get('/profile',function(req,res,next){
+	res.render('profile');
+});
+
+app.get('/editprofile',function(req,res,next){
+	res.render('editprofile');
+});
+
+app.get('/weapon',function(req,res,next){
+	res.render('weapon');
+});
+
+app.get('/enchant',function(req,res,next){
+	res.render('enchant');
+});
 
 //Database Time!!:
 //Ex to test Database --> Puts all blacksmith's names into the console = WORKS
-mysql.pool.query("SELECT fname FROM blacksmith", function(err, result, fields){
-	if(err) throw err;
-	console.log(result);
+// mysql.pool.query("SELECT fname FROM blacksmith", function(err, result, fields){
+// 	if(err) throw err;
+// 	console.log(result);
+// });
+
+app.get('/material',function(req,res,next){
+  var context = {};
+
+  mysql.pool.query('SELECT * FROM material', function(err, materials, fields){
+		res.render('material',{data: materials});
+	});
+
 });
 
-//Add specific ones here
+//Add specific ones here --> Maybe separate JS files????
 // app.use('/classes', require('./classes.js'));
 //
 // app.use('/search', require('./search.js'));

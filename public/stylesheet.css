@@ -124,6 +124,7 @@ fieldset{
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border:1px solid black;
 }
 
 .profile_bit, .weapon_bit, .material_bit, .enchantment_bit{
