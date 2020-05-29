@@ -34,6 +34,10 @@ app.get('/editprofile', function(req,res,next){
 	res.render('editprofile');
 });
 
+app.get('/enchant', function(req,res,next){
+	res.render('enchant');
+});
+
 
 
 app.use(function(req,res){
