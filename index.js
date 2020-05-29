@@ -26,6 +26,10 @@ app.get('/profile', function(req,res,next){
 	res.render('profile');
 });
 
+app.get('/browse', function(req,res,next){
+	res.render('browse');
+});
+
 
 
 app.use(function(req,res){
