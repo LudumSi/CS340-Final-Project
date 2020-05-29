@@ -8,52 +8,27 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
+app.use('/static', express.static('public'));
 app.use('/', express.static('public'));
 
 app.get('/',function(req,res,next){
 	res.render('index');
 });
 
-app.get('/index',function(req,res,next){
-	res.render('index');
+
+//Database Time!!:
+//Ex to test Database --> Puts all blacksmith's names into the console = WORKS
+mysql.pool.query("SELECT fname FROM blacksmith", function(err, result, fields){
+	if(err) throw err;
+	console.log(result);
 });
 
-app.get('/home', function(req,res,next){
-	res.render('home');
-});
-
-app.get('/profile', function(req,res,next){
-	res.render('profile');
-});
-
-app.get('/browse', function(req,res,next){
-	res.render('browse');
-});
-
-app.get('/editprofile', function(req,res,next){
-	res.render('editprofile');
-});
-
-app.get('/enchant', function(req,res,next){
-	res.render('enchant');
-});
-
-app.get('/login', function(req,res,next){
-	res.render('login');
-});
-
-app.get('/newuser', function(req,res,next){
-	res.render('newuser');
-});
-
-app.get('/material', function(req,res,next){
-	res.render('material');
-});
-
-app.get('/weapon', function(req,res,next){
-	res.render('weapon');
-});
-
+//Add specific ones here
+// app.use('/classes', require('./classes.js'));
+//
+// app.use('/search', require('./search.js'));
+//
+// app.use('/admin', require('./admin.js'));
 
 
 app.use(function(req,res){
@@ -75,11 +50,3 @@ app.get('*', function (req, res, next)
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
-
-
-//Add specific ones here
-// app.use('/classes', require('./classes.js'));
-//
-// app.use('/search', require('./search.js'));
-//
-// app.use('/admin', require('./admin.js'));

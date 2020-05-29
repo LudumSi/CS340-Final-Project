@@ -1,12 +1,10 @@
 var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "classmysql.engr.oregonstate.edu",
-  user: "cs340_polktr",
-  password: "Lacedeer03252000"
+var pool = mysql.createPool({
+  connectionLimit : 10,
+  host            : 'classmysql.engr.oregonstate.edu',
+  user            : 'cs340_polktr',
+  password        : 'Lacedeer03252000',
+  database        : 'cs340_polktr'
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Database Connected!");
-});
+module.exports.pool = pool;
