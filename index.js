@@ -38,6 +38,10 @@ app.get('/enchant', function(req,res,next){
 	res.render('enchant');
 });
 
+app.get('/login', function(req,res,next){
+	res.render('login');
+});
+
 
 
 app.use(function(req,res){
