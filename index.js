@@ -50,6 +50,10 @@ app.get('/material', function(req,res,next){
 	res.render('material');
 });
 
+app.get('/weapon', function(req,res,next){
+	res.render('weapon');
+});
+
 
 
 app.use(function(req,res){
