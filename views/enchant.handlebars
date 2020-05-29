@@ -5,29 +5,33 @@
       <li style="float:right" class="nav_element"><a href="/profile">Profile</a></li>
     </ul>
 
-    <h2 id="page-title">Enchantment</h2>
+    <h2 id="page-title">Enchantments</h2>
 
-    <h2 id="magic_name">Enchantment Name Here</h2>
+    {{#each data}}
+      <div class="enchantment_information">
+        <h2 id="magic_name" class="enchantment_bit">{{{this.name}}}</h2>
 
-    <div class="enchantment_information">
-      <div id="stats_div" class="enchantment_bit">
-        <p>Type: Type</p>
+        <div id="stats_div" class="enchantment_bit">
+          <p>Type: {{{this.magicType}}}</p>
+        </div>
+
+        <div id="mats_div" class="enchantment_bit">
+          <h3>Materials Needed:</h3>
+          <ul id="mats_list">
+            <li>List Materials Here</li>
+          <ul>
+        </div>
+
+        <div id="weapons_div" class="enchantment_bit">
+          <h3>Weapons Using This Enchantment:</h3>
+          <ul id="weapons_list">
+            <li>List Weapons Here</li>
+          <ul>
+        </div>
       </div>
-
-      <div id="mats_div" class="enchantment_bit">
-        <h3>Materials Needed:</h3>
-        <ul id="mats_list">
-          <li>List Materials Here</li>
-        <ul>
-      </div>
-
-      <div id="weapons_div" class="enchantment_bit">
-        <h3>Weapons Using This Enchantment:</h3>
-        <ul id="weapons_list">
-          <li>List Weapons Here</li>
-        <ul>
-      </div>
-    </div>
+      
+      <br><br>
+    {{/each}}
 
     <div class="enchantment_buttons">
       <a href="/home"><button type="button">Back</button></a>

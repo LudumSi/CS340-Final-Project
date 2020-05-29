@@ -47,9 +47,6 @@ app.get('/weapon',function(req,res,next){
 	res.render('weapon');
 });
 
-app.get('/enchant',function(req,res,next){
-	res.render('enchant');
-});
 
 //Database Time!!:
 //Ex to test Database --> Puts all blacksmith's names into the console = WORKS
@@ -58,13 +55,20 @@ app.get('/enchant',function(req,res,next){
 // 	console.log(result);
 // });
 
+app.get('/enchant',function(req,res,next){
+	var context = {};
+
+  mysql.pool.query('SELECT * FROM enchantment', function(err, enchantment, fields){
+		res.render('enchant',{data: enchantment});
+	});
+});
+
 app.get('/material',function(req,res,next){
   var context = {};
 
   mysql.pool.query('SELECT * FROM material', function(err, materials, fields){
 		res.render('material',{data: materials});
 	});
-
 });
 
 //Add specific ones here --> Maybe separate JS files????
