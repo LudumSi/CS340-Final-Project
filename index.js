@@ -46,6 +46,10 @@ app.get('/newuser', function(req,res,next){
 	res.render('newuser');
 });
 
+app.get('/material', function(req,res,next){
+	res.render('material');
+});
+
 
 
 app.use(function(req,res){
