@@ -11,18 +11,18 @@ app.set('port', process.argv[2]);
 app.use('/', express.static('public'));
 
 app.get('/',function(req,res,next){
-//   var context = {};
-//
-//   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
-// //	context.results = JSON.stringify(rows);
 	res.render('index');
-	// });
-
 });
 
 app.get('/index',function(req,res,next){
 	res.render('index');
 });
+
+app.get('/home', function(req,res,next){
+	res.render('home');
+});
+
+
 
 app.use(function(req,res){
   res.status(404);
