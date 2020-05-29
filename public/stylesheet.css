@@ -74,7 +74,9 @@ input{
   margin: 5px;
 }
 
-.login_input, .login_buttons1, .login_buttons2, .home_buttons, .newuser_buttons, .browse_buttons, .editprofile_buttons{
+.login_input, .login_buttons1, .login_buttons2, .home_buttons,
+.newuser_buttons, .browse_buttons, .editprofile_buttons,
+.profile_buttons, .weapon_buttons, .material_buttons, .enchantment_buttons{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -84,4 +86,15 @@ input{
 fieldset{
   width:500px;
   margin: auto;
+}
+
+.profile_information, .weapon_information, .material_information, .enchantment_information{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile_bit, .weapon_bit, .material_bit, .enchantment_bit{
+  width: 400px;
 }
