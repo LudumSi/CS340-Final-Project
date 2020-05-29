@@ -43,10 +43,6 @@ app.get('/editprofile',function(req,res,next){
 	res.render('editprofile');
 });
 
-app.get('/weapon',function(req,res,next){
-	res.render('weapon');
-});
-
 
 //Database Time!!:
 //Ex to test Database --> Puts all blacksmith's names into the console = WORKS
@@ -54,6 +50,14 @@ app.get('/weapon',function(req,res,next){
 // 	if(err) throw err;
 // 	console.log(result);
 // });
+
+app.get('/weapon',function(req,res,next){
+	var context = {};
+
+  mysql.pool.query('SELECT * FROM weapon', function(err, weapon, fields){
+		res.render('weapon',{data: weapon});
+	});
+});
 
 app.get('/enchant',function(req,res,next){
 	var context = {};

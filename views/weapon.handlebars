@@ -7,33 +7,37 @@
 
     <h2 id="page-title">Weapon</h2>
 
-    <h2 id="weapon_name">Weapon Name Here</h2>
+    {{#each data}}
+      <div class="weapon_information">
+        <h2 id="weapon_name" class="weapon_bit">{{{this.name}}}</h2>
 
-    <div class="weapon_information">
-      <div id="mats_div" class="weapon_bit">
-        <h3>Materials Used:</h3>
-        <ul id="mats_list">
-          <li>List Materials Here</li>
-        <ul>
+        <div id="mats_div" class="weapon_bit">
+          <h3>Materials Used:</h3>
+          <ul id="mats_list">
+            <li>[List Materials Here]</li>
+          <ul>
+        </div>
+
+        <div id="magic_div" class="weapon_bit">
+          <h3>Enchantments:</h3>
+          <ul id="magic_list">
+            <li>[List Enchantments Here]</li>
+          <ul>
+        </div>
+
+        <div id="stats_div" class="weapon_bit">
+          <h3>Statistics:</h3>
+          <p>Type: {{{this.type}}}</p>
+          <p>Cost: ${{{this.cost}}}</p>
+        </div>
+
+        <div id="smith_info" class="weapon_bit">
+          Created By: [Blacksmith Name here]
+        </div>
       </div>
 
-      <div id="magic_div" class="weapon_bit">
-        <h3>Enchantments:</h3>
-        <ul id="magic_list">
-          <li>List Enchantments Here</li>
-        <ul>
-      </div>
-
-      <div id="stats_div" class="weapon_bit">
-        <h3>Statistics:</h3>
-        <p>Type: Type</p>
-        <p>Cost: Cost</p>
-      </div>
-
-      <div id="smith_info" class="weapon_bit">
-        Created By: Blacksmith
-      </div>
-    </div>
+      <br><br>
+    {{/each}}
 
     <div class="weapon_buttons">
       <a href="/home"><button type="button">Back</button></a>
