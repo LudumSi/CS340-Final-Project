@@ -11,6 +11,12 @@ html {
   margin: 0px;
 }
 
+#main_header a{
+  text-decoration: none;
+  color: white;
+  font-size: 40px;
+}
+
 h2{
   font-size: 35px;
   color: black;
