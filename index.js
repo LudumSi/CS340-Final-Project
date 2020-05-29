@@ -36,6 +36,10 @@ app.get('/browse',function(req,res,next){
 	res.render('browse');
 });
 
+app.get('/browseLoggedIn',function(req,res,next){
+	res.render('browseLoggedIn');
+});
+
 app.get('/browseWeapons',function(req,res,next){
 	res.render('browseWeapons');
 });
