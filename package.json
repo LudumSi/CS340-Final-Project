@@ -5,17 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Preston Pickering, Trinity Polk",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.13.3",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "forever": "^2.0.0",
-    "mysql": "^2.8.0",
-    "nodemon": "^2.0.2"
+    "express": "^4.13.2",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.11.3",
+    "mysql": "^2.8.0"
   }
 }

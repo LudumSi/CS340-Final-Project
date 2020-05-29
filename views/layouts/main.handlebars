@@ -2,18 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="all">
+
     <title>KickAxe Database Manager</title>
 
-    <h1 id="main_header" ><a href = index.html>KickAxe Inventory System</a></h1>
+    <h1 id="main_header" ><a href = /index>KickAxe Inventory System</a></h1>
 
-    {{#each jsscripts}}
-      <script src="/static/{{this}}"></script>
-    {{/each}}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	{{#each jsscripts}}
+  	   <script src="/static/{{this}}"></script>
+  	{{/each}}
+
+    <script src="/index.js" charset="utf-8" defer></script>
   </head>
 
   <body>
     {{{body}}}
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

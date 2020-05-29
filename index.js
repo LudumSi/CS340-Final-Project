@@ -1,27 +1,49 @@
-
 var express = require('express');
 var mysql = require('./dbconfig.js');
 
-var bodyParser = require('body-parser');
-
 var app = express();
-var handlebars = require('express-handlebars');
-app.engine('handlebars', handlebars());
-app.set('view engine','handlebars');
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.json);
-
-app.use('static', express.static('public'));
-app.use('/', express.static('public'));
-
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
-app.set('mysql', mysql);
+app.use('/', express.static('public'));
 
-app.get('/', function(req, res){
+app.get('/',function(req,res,next){
+//   var context = {};
+//
+//   mysql.pool.query('SELECT * FROM bsg_people', function(err, rows, fields){
+// //	context.results = JSON.stringify(rows);
+	res.render('index');
+	// });
+
+});
+
+app.get('/index',function(req,res,next){
 	res.render('index');
 });
+
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
+
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500);
+  res.render('500');
+});
+
+app.get('*', function (req, res, next)
+{
+	res.status(404).render('404');
+});
+
+app.listen(app.get('port'), function(){
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+});
+
 
 //Add specific ones here
 // app.use('/classes', require('./classes.js'));
@@ -29,39 +51,3 @@ app.get('/', function(req, res){
 // app.use('/search', require('./search.js'));
 //
 // app.use('/admin', require('./admin.js'));
-
-app.use(function(req, res){
-	res.status(404);
-	res.render('404');
-});
-
-app.use(function(err, req, res, next){
-	console.error(err.stack);
-	res.type('plain/text');
-	res.status(500);
-	res.render('500');
-});
-
-
-// app.get('/',function(req,res,next){
-//
-//   // res.status(200).render('test-page')
-//
-//   //Can use handlebars to rend stuff from the database, eventually
-//
-//   //res.status(200).render('landing-page',{
-//   //
-//   //      Database bullshit
-//   //
-//   //});
-// });
-
-
-// app.get('*', function (req, res, next)
-// {
-// 	res.status(404).render('404');
-// });
-
-app.listen(app.get('port'), function(){
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
-});
