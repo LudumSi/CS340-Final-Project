@@ -22,6 +22,10 @@ app.get('/home', function(req,res,next){
 	res.render('home');
 });
 
+app.get('/profile', function(req,res,next){
+	res.render('profile');
+});
+
 
 
 app.use(function(req,res){
