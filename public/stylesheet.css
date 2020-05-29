@@ -89,7 +89,7 @@ fieldset{
   margin: auto;
 }
 
-.profile_information, .weapon_information, .material_information, .enchantment_information{
+.profile_information, .weapon_information, .material_information, .enchantment_information, .page_list{
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -98,4 +98,9 @@ fieldset{
 
 .profile_bit, .weapon_bit, .material_bit, .enchantment_bit{
   width: 400px;
+}
+
+.page_description{
+  width: 60%;
+  text-align: center;
 }
