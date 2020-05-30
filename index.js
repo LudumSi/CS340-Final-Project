@@ -65,6 +65,8 @@ app.get('/editprofile',function(req,res,next){
 });
 
 
+
+
 //Database Time!!:
 //Ex to test Database --> Puts all blacksmith's names into the console = WORKS
 // mysql.pool.query("SELECT fname FROM blacksmith", function(err, result, fields){
@@ -81,24 +83,6 @@ app.get('/weapon',function(req,res,next){
 	});
 });
 
-// app.get("/weapon", function (req, res, next) {
-//   let sqlQuery = `SELECT *
-//         from weapon
-//         JOIN wpn_mat
-//             ON (weapon.name =  wpn_mat.wpn_name)`;
-//   // let getData = req.params.name;
-//   mysql.pool.query(sqlQuery, weapon, function (err, result) {
-// 			res.render('weapon', {data: weapon});
-//   });
-
-
-
-
-
-
-
-
-
 app.get('/enchant',function(req,res,next){
 	var context = {};
 
@@ -110,18 +94,13 @@ app.get('/enchant',function(req,res,next){
 app.get('/material',function(req,res,next){
   var context = {};
 
-  mysql.pool.query('SELECT * FROM material', function(err, materials, fields){
+  mysql.pool.query('SELECT * FROM material JOIN wpn_mat ON (material.name = wpn_mat.mat_name) GROUP BY name', function(err, materials, fields){
 		res.render('material',{data: materials});
 	});
 });
 
-//Add specific ones here --> Maybe separate JS files????
-//Ex:
-// app.use('/classes', require('./classes.js'));
-//
-// app.use('/search', require('./search.js'));
-//
-// app.use('/admin', require('./admin.js'));
+
+
 
 
 app.use(function(req,res){
