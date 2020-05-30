@@ -56,10 +56,6 @@ app.get('/browseBlacksmiths',function(req,res,next){
 	res.render('browseBlacksmiths');
 });
 
-app.get('/profile',function(req,res,next){
-	res.render('profile');
-});
-
 app.get('/editprofile',function(req,res,next){
 	res.render('editprofile');
 });
@@ -75,30 +71,28 @@ app.get('/editprofile',function(req,res,next){
 // });
 
 app.get('/weapon',function(req,res,next){
-	var context = {};
-	var materials = {};
-
   mysql.pool.query('SELECT * from weapon JOIN wpn_mat ON (weapon.name =  wpn_mat.wpn_name) JOIN wpn_magic ON (weapon.name=wpn_magic.wpn_name) JOIN blacksmith ON (weapon.smth_id=blacksmith.id) GROUP BY name', function(err, weapon, fields){
 		res.render('weapon',{data: weapon});
 	});
 });
 
 app.get('/enchant',function(req,res,next){
-	var context = {};
-
   mysql.pool.query('SELECT * FROM enchantment JOIN wpn_magic ON (enchantment.name=wpn_magic.magic_name) JOIN magic_reqs ON (enchantment.name=magic_reqs.magic_name) GROUP BY name', function(err, enchantment, fields){
 		res.render('enchant',{data: enchantment});
 	});
 });
 
 app.get('/material',function(req,res,next){
-  var context = {};
-
   mysql.pool.query('SELECT * FROM material JOIN wpn_mat ON (material.name = wpn_mat.mat_name) GROUP BY name', function(err, materials, fields){
 		res.render('material',{data: materials});
 	});
 });
 
+app.get('/profile',function(req,res,next){
+	mysql.pool.query('SELECT * FROM blacksmith JOIN weapon ON (blacksmith.id=weapon.smth_id) JOIN smth_specialty ON (blacksmith.id=smth_specialty.smth_id) JOIN smth_own ON (blacksmith.id=smth_own.smth_id) GROUP by username', function(err, blacksmiths, fields){
+		res.render('profile',{data: blacksmiths});
+	});
+});
 
 
 

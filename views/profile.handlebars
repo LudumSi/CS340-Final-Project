@@ -7,43 +7,47 @@
 
     <h2 id="page-title">Profile</h2>
 
-    <h2 id="smith_name">Blacksmith Name Here</h2>
+    {{#each data}}
+      <div class="profile_information">
+        <h2 id="smith_name">{{{this.fname}}} {{{this.lname}}}</h2>
 
-    <div class="profile_information">
-      <div id="weapons_div" class="profile_bit">
-      <h3>Weapons:</h3>
-      <ul id="weapons_list">
-        <li>List Weapons Here</li>
-      <ul>
+        <div id="weapons_div" class="profile_bit">
+        <h3>Weapons:</h3>
+        <ul id="weapons_list">
+          <li>{{{this.name}}}</li>
+        <ul>
+        </div>
+
+        <div id="materials_div" class="profile_bit">
+        <h3>Materials:</h3>
+        <ul id="materials_list">
+          <li>{{{this.mat_name}}}</li>
+        <ul>
+        </div>
+
+        <div id="mentors_div" class="profile_bit">
+        <h3>Mentors:</h3>
+        <ul id="mentors_list">
+          <li>List Mentors Here</li>
+        <ul>
+        </div>
+
+        <div id="mentees_div" class="profile_bit">
+        <h3>Mentees:</h3>
+        <ul id="mentees_list">
+          <li>List Mentees Here</li>
+        <ul>
+        </div>
+
+        <div id="more_info" class="profile_bit">
+        <p>Specialties: {{{this.specialty}}}</p>
+        <p>Location: {{{this.village}}}, {{{this.kingdom}}}</p>
+        <p>Experience: {{{this.experience}}}</p>
+        </div>
       </div>
 
-      <div id="materials_div" class="profile_bit">
-      <h3>Materials:</h3>
-      <ul id="materials_list">
-        <li>List Materials Here</li>
-      <ul>
-      </div>
-
-      <div id="mentors_div" class="profile_bit">
-      <h3>Mentors:</h3>
-      <ul id="mentors_list">
-        <li>List Mentors Here</li>
-      <ul>
-      </div>
-
-      <div id="mentees_div" class="profile_bit">
-      <h3>Mentees:</h3>
-      <ul id="mentees_list">
-        <li>List Mentees Here</li>
-      <ul>
-      </div>
-
-      <div id="more_info" class="profile_bit">
-      <p>Specialties: Specialty</p>
-      <p>Location: Village, Kingdom</p>
-      <p>Experience: Experience</p>
-      </div>
-    </div>
+      <br><br>
+    {{/each}}
 
     <div class="profile_buttons">
       <a href="/home"><button type="button">Back</button></a>
