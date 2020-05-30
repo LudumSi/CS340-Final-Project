@@ -11,18 +11,20 @@
       <div class="weapon_information">
         <h2 id="weapon_name" class="weapon_bit">{{{this.name}}}</h2>
 
-        <div id="mats_div" class="weapon_bit">
-          <h3>Materials Used:</h3>
-          <ul id="mats_list">
-            <li>[List Materials Here]</li>
-          <ul>
-        </div>
+      <div id="mats_div" class="weapon_bit">
+        <h3>Materials Used:</h3>
+        <ul>
+          <!-- Eventually there will be more than one material per weapon... -->
+          <li>{{{this.mat_name}}}</li>
+        </ul>
+      </div>
 
         <div id="magic_div" class="weapon_bit">
           <h3>Enchantments:</h3>
-          <ul id="magic_list">
-            <li>[List Enchantments Here]</li>
           <ul>
+            <!-- There are more than one enchantment, but only one is being displayed at a time. -->
+            <li>{{{this.magic_name}}}</li>
+          </ul>
         </div>
 
         <div id="stats_div" class="weapon_bit">
@@ -32,8 +34,9 @@
         </div>
 
         <div id="smith_info" class="weapon_bit">
-          Created By: [Blacksmith Name here]
+          <p>Created By: {{{this.fname}}} {{{this.lname}}} </p>
         </div>
+        <br><br>
       </div>
 
       <br><br>

@@ -74,11 +74,30 @@ app.get('/editprofile',function(req,res,next){
 
 app.get('/weapon',function(req,res,next){
 	var context = {};
+	var materials = {};
 
-  mysql.pool.query('SELECT * FROM weapon', function(err, weapon, fields){
+  mysql.pool.query('SELECT * from weapon JOIN wpn_mat ON (weapon.name =  wpn_mat.wpn_name) JOIN wpn_magic ON (weapon.name=wpn_magic.wpn_name) JOIN blacksmith ON (weapon.smth_id=blacksmith.id) GROUP BY name', function(err, weapon, fields){
 		res.render('weapon',{data: weapon});
 	});
 });
+
+// app.get("/weapon", function (req, res, next) {
+//   let sqlQuery = `SELECT *
+//         from weapon
+//         JOIN wpn_mat
+//             ON (weapon.name =  wpn_mat.wpn_name)`;
+//   // let getData = req.params.name;
+//   mysql.pool.query(sqlQuery, weapon, function (err, result) {
+// 			res.render('weapon', {data: weapon});
+//   });
+
+
+
+
+
+
+
+
 
 app.get('/enchant',function(req,res,next){
 	var context = {};
