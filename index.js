@@ -86,7 +86,7 @@ app.get('/weapon',function(req,res,next){
 app.get('/enchant',function(req,res,next){
 	var context = {};
 
-  mysql.pool.query('SELECT * FROM enchantment', function(err, enchantment, fields){
+  mysql.pool.query('SELECT * FROM enchantment JOIN wpn_magic ON (enchantment.name=wpn_magic.magic_name) JOIN magic_reqs ON (enchantment.name=magic_reqs.magic_name) GROUP BY name', function(err, enchantment, fields){
 		res.render('enchant',{data: enchantment});
 	});
 });
