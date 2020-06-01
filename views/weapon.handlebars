@@ -14,16 +14,18 @@
       <div id="mats_div" class="weapon_bit">
         <h3>Materials Used:</h3>
         <ul>
-          <!-- Eventually there will be more than one material per weapon... -->
-          <li>{{{this.mat_name}}}</li>
+          {{#each this.materials}}
+            <li>{{{this}}}</li>
+          {{/each}}
         </ul>
       </div>
 
         <div id="magic_div" class="weapon_bit">
           <h3>Enchantments:</h3>
           <ul>
-            <!-- There are more than one enchantment, but only one is being displayed at a time. -->
-            <li>{{{this.magic_name}}}</li>
+            {{#each this.enchants}}
+              <li>{{{this}}}</li>
+            {{/each}}
           </ul>
         </div>
 
