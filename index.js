@@ -192,8 +192,102 @@ app.get('/material',function(req,res,next){
 });
 
 app.get('/profile',function(req,res,next){
-	mysql.pool.query('SELECT * FROM blacksmith JOIN weapon ON (blacksmith.id=weapon.smth_id) JOIN smth_specialty ON (blacksmith.id=smth_specialty.smth_id) JOIN smth_own ON (blacksmith.id=smth_own.smth_id) GROUP by username', function(err, blacksmiths, fields){
-		res.render('profile',{data: blacksmiths});
+	mysql.pool.query('SELECT * FROM blacksmith', function(err, smiths, fields){
+		mysql.pool.query('SELECT * FROM smth_specialty', function(err, smith_specs, fields){
+			mysql.pool.query('SELECT name,smth_id FROM weapon', function(err, weapons,fields){
+				mysql.pool.query('SELECT smth_id,mat_name FROM smth_own', function(err, mats,fields){
+					mysql.pool.query('SELECT mentor,mentee FROM smth_training', function(err, train, fields){
+
+						var smith_data = [];
+
+						for(var i = 0;i < smiths.length;i++){
+
+								var packet = {};
+								packet.id = smiths[i].id;
+								packet.fname = smiths[i].fname;
+								packet.lname = smiths[i].lname;
+								packet.village = smiths[i].village;
+								packet.kingdom = smiths[i].kingdom;
+
+								switch(smiths[i].experience){
+									case 3:
+										packet.experience = "Master";
+										break;
+
+									case 2:
+										packet.experience = "Journeyman";
+										break;
+
+									default:
+										packet.experience = "Apprentice";
+								}
+
+								packet.specialty = [];
+								packet.materials = [];
+								packet.weapons = [];
+								packet.mentors = [];
+								packet.mentees = [];
+
+								smith_data.push(packet);
+							}
+
+							for(var i = 0; i < smith_specs.length; i++){
+
+								for(var j = 0; j < smith_data.length; j++){
+
+									if(smith_data[j].id == smith_specs[i].smth_id){
+										smith_data[j].specialty.push(smith_specs[i].specialty);
+									}
+								}
+							}
+
+							for(var i = 0; i < weapons.length;i++){
+								for(var j = 0;j < smith_data.length;j++){
+
+									if(smith_data[j].id == weapons[i].smth_id){
+										smith_data[j].weapons.push(weapons[i].name);
+									}
+								}
+							}
+
+							for(var i = 0; i < mats.length;i++){
+								for(var j = 0;j < smith_data.length;j++){
+
+									if(smith_data[j].id == mats[i].smth_id){
+										smith_data[j].materials.push(mats[i].mat_name);
+									}
+								}
+							}
+
+							for(var i = 0; i < train.length;i ++){
+								for(var j = 0;j < smith_data.length;j++){
+
+									if(smith_data[j].id == train[i].mentee){
+										for(var k = 0;k < smith_data.length;k++){
+											if(smith_data[k].id == train[i].mentor){
+												smith_data[j].mentors.push(smith_data[k].fname + " " + smith_data[k].lname);
+											}
+										}
+									}
+
+									if(smith_data[j].id == train[i].mentor){
+										for(var k = 0;k < smith_data.length;k++){
+											if(smith_data[k].id == train[i].mentee){
+												smith_data[j].mentees.push(smith_data[k].fname + " " + smith_data[k].lname);
+											}
+										}
+									}
+
+								}
+							}
+
+							//console.log(smith_data);
+							res.render('profile',{data: smith_data});
+
+					});
+				});
+			});
+		});
 	});
 });
 

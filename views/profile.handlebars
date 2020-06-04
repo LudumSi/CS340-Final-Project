@@ -14,49 +14,54 @@
         <div id="weapons_div" class="profile_bit">
         <h3>Weapons:</h3>
         <ul id="weapons_list">
-        {{#each weapons}}
+        {{#each this.weapons}}
           <li>{{{this}}}</li>
         {{/each}}
-        <ul>
+        </ul>
         </div>
 
         <div id="materials_div" class="profile_bit">
         <h3>Materials:</h3>
         <ul id="materials_list">
-        {{#each materials}}
+        {{#each this.materials}}
           <li>{{{this}}}</li>
         {{/each}}
-        <ul>
+        </ul>
         </div>
 
         <div id="mentors_div" class="profile_bit">
         <h3>Mentors:</h3>
         <ul id="mentors_list">
-        {{#each mentors}}
+        {{#each this.mentors}}
           <li>{{this}}</li>
-        {{#each}}
-        <ul>
+        {{/each}}
+        </ul>
         </div>
 
         <div id="mentees_div" class="profile_bit">
         <h3>Mentees:</h3>
         <ul id="mentees_list">
-        {{#each mentees}}
+        {{#each this.mentees}}
           <li>{{this}}</li>
         {{/each}}
-        <ul>
+        </ul>
         </div>
 
         <div id="more_info" class="profile_bit">
-        <p>Specialties: {{{this.specialty}}}</p>
+        <p>Specialties:</p>
+        <ul>
+        {{#each this.specialty}}
+          <li>{{{this}}}</li>
+        {{/each}}
+        </ul>
         <p>Location: {{{this.village}}}, {{{this.kingdom}}}</p>
         <p>Experience: {{{this.experience}}}</p>
         </div>
       </div>
 
-      <br><br>
+      <br></br>
     {{/each}}
 
     <div class="profile_buttons">
-      <a href="/home"><button type="button">Back</button></a>
+      <a href="/home"> <button type="button">Back</button></a>
     </div>
