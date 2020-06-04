@@ -14,28 +14,36 @@
         <div id="weapons_div" class="profile_bit">
         <h3>Weapons:</h3>
         <ul id="weapons_list">
-          <li>{{{this.name}}}</li>
+        {{#each weapons}}
+          <li>{{{this}}}</li>
+        {{/each}}
         <ul>
         </div>
 
         <div id="materials_div" class="profile_bit">
         <h3>Materials:</h3>
         <ul id="materials_list">
-          <li>{{{this.mat_name}}}</li>
+        {{#each materials}}
+          <li>{{{this}}}</li>
+        {{/each}}
         <ul>
         </div>
 
         <div id="mentors_div" class="profile_bit">
         <h3>Mentors:</h3>
         <ul id="mentors_list">
-          <li>List Mentors Here</li>
+        {{#each mentors}}
+          <li>{{this}}</li>
+        {{#each}}
         <ul>
         </div>
 
         <div id="mentees_div" class="profile_bit">
         <h3>Mentees:</h3>
         <ul id="mentees_list">
-          <li>List Mentees Here</li>
+        {{#each mentees}}
+          <li>{{this}}</li>
+        {{/each}}
         <ul>
         </div>
 

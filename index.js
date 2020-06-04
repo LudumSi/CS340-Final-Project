@@ -4,16 +4,55 @@ var mysql = require('./dbconfig.js');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
+var bodyParser = require('body-parser');
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
+app.use(bodyParser.json());
 //Basic Pages :) It is bad, I know, but eh it works and I don't wanna clean it lol
 app.use('/static', express.static('public'));
 app.use('/', express.static('public'));
 
 app.get('/',function(req,res,next){
 	res.render('index');
+});
+
+app.post('/addUser',function(req,res,next){
+
+	if(req.body){
+		var data = req.body;
+
+		mysql.pool.query("SELECT username FROM blacksmith", function(err, result, fields){
+
+			var name_free = true;
+
+			for(var i = 0; i < result.length;i++){
+
+				if(result[i].username == data.username) name_free = false;
+			}
+
+			if(name_free){
+				var query = "INSERT blacksmith (username,password,fname,lname,dob,experience,kingdom,village) VALUES ('" +
+					data.username + "','" +
+					data.password + "','" +
+					data.fname + "','" +
+					data.lname + "','" +
+					data.dob + "'," +
+					data.experience + ",'" +
+					data.kingdom + "','" +
+					data.village + "');";
+
+				console.log(query);
+				mysql.pool.query(query,function(err, fields){if(err){throw err;}});
+
+			}else{
+				console.log("Username is repeated. Should find a way to let user know");
+			}
+
+		});
+	}
 });
 
 app.get('/index',function(req,res,next){
@@ -28,8 +67,9 @@ app.get('/login',function(req,res,next){
 	res.render('login');
 });
 
+var scripts = ['createAccount.js']
 app.get('/newuser',function(req,res,next){
-	res.render('newuser');
+	res.render('newuser',{jsscripts: scripts});
 });
 
 app.get('/browse',function(req,res,next){
@@ -134,6 +174,7 @@ app.get('/weapon',function(req,res,next){
 				});
 
 			});
+
 	});
 
 });

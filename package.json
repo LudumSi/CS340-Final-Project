@@ -10,7 +10,7 @@
   "author": "Preston Pickering, Trinity Polk",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.13.3",
+    "body-parser": "^1.19.0",
     "express": "^4.13.2",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.11.3",
