@@ -55,6 +55,116 @@ app.post('/addUser',function(req,res,next){
 	}
 });
 
+app.post('/addWeapon',function(req,res,next){
+
+	if(req.body){
+		var data = req.body;
+
+		var split_name = data.smith_name.split(" ");
+		//console.log(split_name);
+
+		//Checks to make sure the smith exists
+		mysql.pool.query("SELECT id,fname,lname FROM blacksmith;", function(err, result, fields){
+
+			var real_name = false;
+			var smith_id = null;
+
+			for(var i = 0; i < result.length;i++){
+				//console.log(result[i].fname);
+				//console.log(result[i].lname);
+				if(result[i].fname == split_name[0] && result[i].lname == split_name[1]){
+					 real_name = true;
+					 smith_id = result[i].id;
+					 break;
+				}
+			}
+
+			if(real_name){
+
+				//Checks to make sure the material exists
+				mysql.pool.query("SELECT name FROM material;", function(err, mat_data, fields){
+
+					var real_mat = false;
+					for(var i = 0; i < mat_data.length;i++){
+
+						if(mat_data[i].name == data.weapon_mats){
+							 real_mat = true;
+							 break;
+						}
+					}
+
+					if(real_mat){
+
+						mysql.pool.query("SELECT name FROM enchantment;",function(err, magic_data, fields){
+
+							var real_magic = false;
+							for(var i = 0; i < magic_data.length;i++){
+
+								if(magic_data[i].name == data.weapon_magic){
+									 real_magic = true;
+									 break;
+								}
+							}
+
+							if(real_magic){
+
+								//Checks to make sure the weapon name isn't a duplicate
+								mysql.pool.query("SELECT name FROM weapon;", function(err, weapon_names, fields){
+
+									var name_free = true;
+
+									for(var i = 0; i < weapon_names.length;i++){
+
+										if(weapon_names[i].name == data.weapon_name) {
+											name_free = false;
+										}
+									}
+
+									if(name_free){
+
+										var query = "INSERT weapon (name,type,cost,smth_id) VALUES ('" +
+											data.weapon_name + "','" +
+											data.weapon_type + "','" +
+											data.weapon_cost + "','" +
+											smith_id + "');";
+
+										mysql.pool.query(query,function(err, fields){if(err){throw err;}});
+
+										query = "INSERT wpn_mat (wpn_name, mat_name, mat_amount) VALUES ('" +
+											data.weapon_name + "','" +
+											data.weapon_mats + "'," +
+											10 + ");";
+
+										mysql.pool.query(query,function(err, fields){if(err){throw err;}});
+
+										query = "INSERT wpn_magic (wpn_name,magic_name) VALUES ('" +
+											data.weapon_name + "','" +
+											data.weapon_magic + "');";
+
+										mysql.pool.query(query,function(err, fields){if(err){throw err;}});
+									}else{
+										console.log("Weapon name is a duplicate. Should find a way to let the user know");
+									}
+
+							});
+
+						}else{
+							console.log("Magic name is bad. Should find a way to let the user know");
+						}
+
+					});
+
+					}else{
+						console.log("Material name is bad. Should find a way to let the user know");
+					}
+				});
+			}else{
+				console.log("Blacksmith name is bad. Should find a way to let the user know");
+			}
+		});
+	}
+});
+
 app.get('/index',function(req,res,next){
 	res.render('index');
 });
@@ -96,8 +206,9 @@ app.get('/browseBlacksmiths',function(req,res,next){
 	res.render('browseBlacksmiths');
 });
 
+var scripts = ['editProfile.js']
 app.get('/editprofile',function(req,res,next){
-	res.render('editprofile');
+	res.render('editprofile',{jsscripts: scripts});
 });
 
 //Database Time!!:

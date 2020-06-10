@@ -7,7 +7,12 @@
 
     <h2 id="page-title">Edit Profile</h2>
 
-    <h2 id="smith_name">[Blacksmith Name Here]</h2>
+    <h2 id="display_smith_name">[Blacksmith Name Here]</h2>
+
+    <fieldset>
+      <legend>Blacksmith Name</legend>
+      <label>Name:</label><input id="smith_name"></input><br><br>
+    </fieldset>
 
     <fieldset>
       <legend>Add Training</legend>
@@ -23,8 +28,8 @@
       <label>Name:</label><input id="weapon_name"></input><br><br>
       <label>Type:</label><input id="weapon_type"></input><br><br>
       <label>Cost:</label><input id="weapon_cost"></input><br><br>
-      <label>Materials:</label><input id="weapon_mats"></input><br><br>
-      <label>Enchantments:</label><input id="weapon_magic"></input><br><br>
+      <label>Material:</label><input id="weapon_mats"></input><br><br>
+      <label>Enchantment:</label><input id="weapon_magic"></input><br><br>
     </fieldset>
 
     <fieldset>
@@ -50,6 +55,6 @@
     </fieldset>
 
     <div class='editprofile_buttons'>
-      <button type="button">Submit</button>
+      <button type="button" id="sub-butt">Submit</button>
       <a href="/home"><button type="button">Back</button></a>
     </div>
